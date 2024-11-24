@@ -5,26 +5,26 @@
   padding: 1rem;
   width: calc(
     100% - 20px
-  ); /* Reduce el ancho en 20px para dejar un espacio de 10px a la izquierda y derecha */
-  margin: 0 10px; /* Agrega un margen de 10px a la izquierda y derecha */
+  ); 
+  margin: 0 10px; 
   font-family: Arial, sans-serif;
-  box-sizing: border-box; /* Asegura que el padding se incluya en el cálculo del ancho */
+  box-sizing: border-box; 
 }
 
 .container-table {
   background-color: #ffffff;
 }
 
-/* Contenedor de búsqueda y botón */
+
 .search-bar {
   display: flex;
-  align-items: center; /* Centra verticalmente el input y el botón */
-  justify-content: space-between; /* Espacia elementos entre los extremos */
-  gap: 1rem; /* Opcional: espacio entre elementos */
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 1rem; 
 }
 
 .search-input {
-  width: 30%; /* Ocupa el 70% del ancho del contenedor */
+  width: 30%; 
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border: 1px solid #ccc;
@@ -33,8 +33,8 @@
 }
 
 .search-input:focus {
-  border-color: #ffd700; /* Color amarillo para el borde */
-  outline: none; /* Elimina el borde azul predeterminado */
+  border-color: #ffd700; 
+  outline: none; 
 }
 
 .add-button {
@@ -61,8 +61,8 @@
   box-sizing: border-box;
   width: calc(
     100% - 30px
-  ); /* Reduce el ancho en 20px para dejar un espacio de 10px a la izquierda y derecha */
-  margin: 0 15px; /* Agrega un margen de 10px a la izquierda y derecha */
+  ); 
+  margin: 0 15px; 
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -119,7 +119,7 @@ td .logo {
   font-size: 1rem;
 }
 
-/* Responsividad */
+
 @media (max-width: 768px) {
   th,
   td {
@@ -133,34 +133,33 @@ td .logo {
   }
 }
 
-/* Contenedor del dropdown */
+
 .dropdown {
-  position: relative; /* Contenedor debe ser relativo */
+  position: relative; 
   display: inline-block;
 }
 
-/* Botón del dropdown */
+
 .dropdown-button {
-  background: none; /* Sin color de fondo */
-  color: inherit; /* Hereda el color del texto del contenedor */
-  border: none; /* Sin bordes */
-  padding: 8px; /* Área clicable */
-  cursor: pointer; /* Cursor de puntero al pasar sobre el botón */
-  font-size: 16px; /* Tamaño de fuente adecuado */
+  background: none; 
+  color: inherit; 
+  border: none; 
+  padding: 8px; 
+  cursor: pointer; 
+  font-size: 16px; 
 }
 
-/* Eliminar estilos por defecto del botón en focus */
 .dropdown-button:focus {
   outline: none;
 }
 
-/* Menú desplegable */
+
 .dropdown-menu {
-  display: none; /* Oculto por defecto */
-  position: absolute; /* Posición absoluta con respecto al contenedor padre */
-  top: 0; /* Alineado verticalmente con el botón */
-  left: auto; /* Respaldo: no usar left */
-  right: 100%; /* Mueve el menú completamente a la izquierda del botón */
+  display: none; 
+  position: absolute; 
+  top: 0; 
+  left: auto; 
+  right: 100%; 
   background-color: white;
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -168,10 +167,10 @@ td .logo {
   padding: 8px 0;
   min-width: 120px;
   border-radius: 4px;
-  text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+  text-align: left; 
 }
 
-/* Botón dentro del menú */
+
 .dropdown-menu button {
   background: none;
   border: none;
@@ -183,14 +182,13 @@ td .logo {
   color: #333;
 }
 
-/* Mostrar el menú cuando se activa */
 .dropdown:hover .dropdown-menu,
 .dropdown:focus-within .dropdown-menu {
   display: block;
 }
 
 .logo-image {
-  width: 50px; /* O el tamaño que necesites */
+  width: 50px; 
   height: auto;
-  border-radius: 5px; /* Si deseas bordes redondeados */
+  border-radius: 5px; 
 }
