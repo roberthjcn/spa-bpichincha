@@ -1,0 +1,83 @@
+<div class="container">
+  <h2>Formulario de Registro</h2>
+  <div class="divider"></div> <!-- Divider agregado -->
+  <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="id">ID</label>
+        <input id="id" type="text" name="id" formControlName="id" />
+        <div class="error-message" *ngIf="accountForm.controls['id'].errors?.['required'] && submitted">
+          Este campo es requerido!
+        </div>
+        <div class="error-message" *ngIf="accountForm.controls['id'].errors?.['idExists'] && submitted">
+          ID no válido!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input id="name" type="text" formControlName="name" />
+        <div class="error-message" *ngIf="submitted">
+          <div *ngIf="accountForm.controls['name'].errors?.['required']">
+            Este campo es requerido!
+          </div>
+          <div *ngIf="accountForm.controls['name'].errors?.['minlength'] ||
+            accountForm.controls['name'].errors?.['maxlength']">
+            Debe contener mínimo 5 y máximo 100 caracteres.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="description">Descripción</label>
+        <input id="description" formControlName="description" type="text" />
+        <div class="error-message" *ngIf="submitted">
+          <div *ngIf="accountForm.controls['description'].errors?.['required']">
+            Este campo es requerido!
+          </div>
+          <div *ngIf="accountForm.controls['description'].errors?.['minlength'] ||
+              accountForm.controls['description'].errors?.['maxlength']">
+            Debe contener mínimo 10 y máximo 200 caracteres.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="logo">Logo</label>
+        <input id="logo" type="text" formControlName="logo" />
+        <div class="error-message" *ngIf="accountForm.controls['logo'].errors?.['required'] && submitted">
+          Este campo es requerido!
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="date_release">Fecha Liberación</label>
+        <input id="date_release" type="date" formControlName="date_release" (change)="calculateDateRevision()" />
+        <div class="error-message" *ngIf="submitted">
+          <div *ngIf="accountForm.controls['date_release'].errors?.['required']">
+            Este campo es requerido!
+          </div>
+          <div *ngIf="accountForm.controls['date_release'].errors?.['minDate']">
+            La fecha debe ser igual o mayor a hoy.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="date_revision">Fecha Revisión</label>
+        <input id="date_revision" type="date" formControlName="date_revision" />
+        <div class="error-message" *ngIf="submitted">
+          <div *ngIf="accountForm.controls['date_revision'].errors?.['required']">
+            Este campo es requerido!
+          </div>
+          <div *ngIf="accountForm.errors?.['invalidReviewDate']">
+            La fecha de revisión debe ser exactamente un año posterior a la fecha de liberación.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-footer">
+      <button class="btn-secondary" (click)="resetForm()">Reiniciar</button>
+      <button class="btn-primary" type="submit">Enviar</button>
+    </div>
+  </form>
+</div>

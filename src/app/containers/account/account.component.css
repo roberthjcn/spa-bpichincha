@@ -1,0 +1,196 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  width: calc(
+    100% - 20px
+  ); /* Reduce el ancho en 20px para dejar un espacio de 10px a la izquierda y derecha */
+  margin: 0 10px; /* Agrega un margen de 10px a la izquierda y derecha */
+  font-family: Arial, sans-serif;
+  box-sizing: border-box; /* Asegura que el padding se incluya en el cálculo del ancho */
+}
+
+.container-table {
+  background-color: #ffffff;
+}
+
+/* Contenedor de búsqueda y botón */
+.search-bar {
+  display: flex;
+  align-items: center; /* Centra verticalmente el input y el botón */
+  justify-content: space-between; /* Espacia elementos entre los extremos */
+  gap: 1rem; /* Opcional: espacio entre elementos */
+}
+
+.search-input {
+  width: 30%; /* Ocupa el 70% del ancho del contenedor */
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 100%;
+}
+
+.search-input:focus {
+  border-color: #ffd700; /* Color amarillo para el borde */
+  outline: none; /* Elimina el borde azul predeterminado */
+}
+
+.add-button {
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #ffd700;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  min-height: 36px;
+  flex-shrink: 0;
+}
+
+.add-button:hover {
+  background-color: #e6c200;
+}
+
+.table-container {
+  background: white;
+  border-radius: 0px;
+  overflow-x: auto;
+  box-sizing: border-box;
+  width: calc(
+    100% - 30px
+  ); /* Reduce el ancho en 20px para dejar un espacio de 10px a la izquierda y derecha */
+  margin: 0 15px; /* Agrega un margen de 10px a la izquierda y derecha */
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead {
+  background: #f0f0f0;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  font-weight: bold;
+}
+
+td .logo {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ccc;
+  border-radius: 50%;
+  font-weight: bold;
+  color: white;
+}
+
+.menu-button {
+  border: none;
+  background: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.pagination-container select {
+  padding: 0.25rem;
+  font-size: 1rem;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  th,
+  td {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  .add-button {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+/* Contenedor del dropdown */
+.dropdown {
+  position: relative; /* Contenedor debe ser relativo */
+  display: inline-block;
+}
+
+/* Botón del dropdown */
+.dropdown-button {
+  background: none; /* Sin color de fondo */
+  color: inherit; /* Hereda el color del texto del contenedor */
+  border: none; /* Sin bordes */
+  padding: 8px; /* Área clicable */
+  cursor: pointer; /* Cursor de puntero al pasar sobre el botón */
+  font-size: 16px; /* Tamaño de fuente adecuado */
+}
+
+/* Eliminar estilos por defecto del botón en focus */
+.dropdown-button:focus {
+  outline: none;
+}
+
+/* Menú desplegable */
+.dropdown-menu {
+  display: none; /* Oculto por defecto */
+  position: absolute; /* Posición absoluta con respecto al contenedor padre */
+  top: 0; /* Alineado verticalmente con el botón */
+  left: auto; /* Respaldo: no usar left */
+  right: 100%; /* Mueve el menú completamente a la izquierda del botón */
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  padding: 8px 0;
+  min-width: 120px;
+  border-radius: 4px;
+  text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+}
+
+/* Botón dentro del menú */
+.dropdown-menu button {
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Mostrar el menú cuando se activa */
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
+.logo-image {
+  width: 50px; /* O el tamaño que necesites */
+  height: auto;
+  border-radius: 5px; /* Si deseas bordes redondeados */
+}

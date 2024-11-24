@@ -1,0 +1,129 @@
+.container {
+  max-width: 600px; /* Ancho máximo del formulario */
+  margin: 50px auto; /* Centrado horizontal y separación vertical */
+  padding: 2rem; /* Espaciado interno */
+  background-color: #ffffff; /* Fondo blanco */
+  border-radius: 0px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  font-family: Arial, sans-serif;
+  animation: fadeIn 0.4s ease; /* Animación de entrada */
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Espaciado general */
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espaciado general entre grupos */
+}
+
+.form-row {
+  display: flex;
+  gap: 15px; /* Espaciado entre columnas */
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+input,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #ffc107; /* Amarillo al enfocarse */
+}
+
+.error-text {
+  font-size: 12px;
+  color: red;
+  margin-top: 5px;
+}
+
+/* Botones */
+.form-footer {
+  display: flex; /* Asegura que los botones estén en línea */
+  justify-content: center; /* Centra los botones horizontalmente */
+  gap: 20px; /* Añade un espacio de 20px entre los botones */
+  margin-top: 70px; /* Añade separación con el formulario */
+}
+
+.btn-primary {
+  background-color: #f4d03f;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #e0a800;
+}
+
+.btn-secondary {
+  background-color: #dcdcdc;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+}
+
+.divider {
+  height: 1px; /* Grosor del divider */
+  background-color: #cfcece; /* Color de la línea */
+  margin: 15px 0; /* Separación arriba y abajo */
+  width: 100% !important; /* Abarca todo el ancho del modal */
+}
+
+.error-message {
+  color: #f00; /* Color rojo para los mensajes de error */
+  font-size: 12px;
+  margin-top: 5px; /* Separación con el input */
+}

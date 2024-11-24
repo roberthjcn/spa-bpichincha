@@ -1,0 +1,11 @@
+{
+  "/bp": {
+    "target": "http://localhost:3002",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

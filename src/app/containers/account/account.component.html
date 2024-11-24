@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="search-bar">
+    <input type="text" class="search-input" placeholder="Search..." (input)="onSearch($event)" />
+    <button class="add-button" (click)="addNewAccount()">Agregar</button>
+  </div>
+  <div class="container-table">
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Logo</th>
+            <th>Nombre del account</th>
+            <th>Descripción</th>
+            <th>Fecha de liberación</th>
+            <th>Fecha de reestructuración</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let account of displayedAccounts">
+            <td>
+              <img [src]="account.logo" alt="Logo" class="logo-image" />
+            </td>
+            <td>{{ account.name }}</td>
+            <td>{{ account.description }}</td>
+            <td>{{ account.date_release | date: 'dd-MM-yyyy' }}</td>
+            <td>{{ account.date_revision | date: 'dd-MM-yyyy' }}</td>
+            <td>
+              <div class="dropdown">
+                <button class="dropdown-button">
+                  &#x22EE;
+                </button>
+                <div class="dropdown-menu">
+                  <button (click)="editAccount(account)">Editar</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination-container">
+      <p>{{ filteredAccounts.length }} Resultados</p>
+      <select (change)="changePageSize($event)">
+        <option *ngFor="let pageSize of [5, 10, 20]" [value]="pageSize">{{ pageSize }}</option>
+      </select>
+    </div>
+  </div>
+</div>
