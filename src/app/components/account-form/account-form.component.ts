@@ -30,7 +30,7 @@ export class AccountFormComponent implements OnInit {
     const today = new Date();
     const todayTimestamp = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
     this.accountForm = this.fb.group({
-      id: [{ value: '', disabled: this.accountId === null ? false : true }, Validators.required, [this.validatorId.bind(this)]],
+      id: [{ value: '', disabled: this.accountId === null ? false : true }, [Validators.required, Validators.minLength(3), Validators.maxLength(10)], [this.validatorId.bind(this)]],
       name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
       description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
       logo: ['', Validators.required],

@@ -6,8 +6,14 @@
       <div class="form-group">
         <label for="id">ID</label>
         <input id="id" type="text" name="id" formControlName="id" />
-        <div class="error-message" *ngIf="accountForm.controls['id'].errors?.['required'] && submitted">
-          Este campo es requerido!
+        <div class="error-message" *ngIf="submitted">
+          <div *ngIf="accountForm.controls['id'].errors?.['required']">
+            Este campo es requerido!
+          </div>
+          <div *ngIf="accountForm.controls['id'].errors?.['minlength'] ||
+            accountForm.controls['id'].errors?.['maxlength']">
+            Debe contener mínimo 3 y máximo 10 caracteres.
+          </div>
         </div>
         <div class="error-message" *ngIf="accountForm.controls['id'].errors?.['idExists'] && submitted">
           ID no válido!
