@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { AccountFormComponent } from './components/account-form/account-form.component';
-import { AccountComponent } from './containers/account/account.component';
+import { AccountComponent } from './components/account/account.component';
 
 export const routes: Routes = [
     {

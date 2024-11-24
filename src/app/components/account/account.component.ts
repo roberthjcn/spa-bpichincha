@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { AccountService } from '../../service/account.service';
@@ -15,6 +15,7 @@ export class AccountComponent implements OnInit {
   pageSize: number = 5;
   accounts: Account[] = [];
   filteredAccounts: Account[] = [];
+  numberAccounts: number = 0;
   errorMessage: string | null = null;
 
   constructor(
@@ -33,6 +34,7 @@ export class AccountComponent implements OnInit {
       (data) => {
         this.accounts = data;
         this.filteredAccounts = [...this.accounts];
+        this.numberAccounts = this.pageSize;
       },
       (error) => {
         console.error('Error al obtener las cuentas', error);
@@ -45,20 +47,16 @@ export class AccountComponent implements OnInit {
     this.filteredAccounts = this.accounts.filter((account) =>
       account.name.toLowerCase().includes(input.value.toLowerCase())
     );
-  }
-
-  onPageSizeChange(pageSize: number): void {
-    console.log(`Cambiar tamaño de página a: ${pageSize}`);
-    // Aquí puedes implementar lógica de paginación
+    this.numberAccounts = input.value === '' ? this.pageSize : this.filteredAccounts.length;
   }
 
   get displayedAccounts(): any[] {
     return this.filteredAccounts.slice(0, this.pageSize);
   }
 
-  // Cambiar el número de accounts por página
   changePageSize(event: any): void {
     this.pageSize = event.target.value;
+    this.numberAccounts = this.filteredAccounts.length > this.pageSize ? this.pageSize : this.filteredAccounts.length;
   }
 
   addNewAccount(): void {

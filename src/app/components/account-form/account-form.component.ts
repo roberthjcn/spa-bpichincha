@@ -98,55 +98,33 @@ export class AccountFormComponent implements OnInit {
   }
 
   resetForm(): void {
-    this.submitted = false; // Si estás usando una bandera para controlar la visualización de errores
-    this.accountForm.reset({
-      id: '',
+    this.submitted = false;
+    const formValues = {
+      id: this.accountId === null ? '' : this.accountId,
       name: '',
       description: '',
       date_release: '',
       date_revision: { value: '', disabled: true },
-    });
+    };
+
+    this.accountForm.reset(formValues);
   }
 
   onSubmit() {
     this.submitted = true;
-    if (this.accountForm.valid) {
-      const account: Account = {
-        id: this.accountForm.get('id')?.value,
-        name: this.accountForm.get('name')?.value,
-        description: this.accountForm.get('description')?.value,
-        logo: this.accountForm.get('logo')?.value,
-        date_release: this.accountForm.get('date_release')?.value,
-        date_revision: this.accountForm.get('date_revision')?.value,
-      }
-      if (this.accountId === null) {
-        this._accountService.addAccount(account).subscribe(
-          (data) => {
-            this.router.navigate(['/account-list']);
-          },
-          (error) => {
-            console.error('No es posible guardar', error);
-          }
-        );
-      } else {
-        const accountEdit: Account = {
-          name: this.accountForm.get('name')?.value,
-          description: this.accountForm.get('description')?.value,
-          logo: this.accountForm.get('logo')?.value,
-          date_release: this.accountForm.get('date_release')?.value,
-          date_revision: this.accountForm.get('date_revision')?.value,
-        }
-        this._accountService.editAccount(this.accountId, accountEdit).subscribe(
-          (data) => {
-            this.router.navigate(['/account-list']);
-          },
-          (error) => {
-            console.error('No es posible editar', error);  // handle error here 200, 404, 500 etc.  or use catchError() operator to handle error in a centralized way. 3rd party libraries like ngx-toastr can be used to show error messages. 404 error can be handled by displaying a 404 page etc. 500 error can be handled by displaying a generic error page etc.  For example: this.toastr.error('Error al guardar la cuenta');
-          }
-        )
-      }
 
-    } else console.log('Formulario inválido');
+    if (this.accountForm.invalid) {
+      console.log('Formulario inválido');
+      return;
+    }
+
+    const account = this.createAccountFromForm();
+
+    if (this.accountId === null) {
+      this.createAccount(account);
+    } else {
+      this.updateAccount(account);
+    }
   }
 
   validatorId(control: AbstractControl) {
@@ -159,5 +137,38 @@ export class AccountFormComponent implements OnInit {
         )
       )
     );
+  }
+
+  createAccountFromForm(): Account {
+    return {
+      id: this.accountForm.get('id')?.value,
+      name: this.accountForm.get('name')?.value,
+      description: this.accountForm.get('description')?.value,
+      logo: this.accountForm.get('logo')?.value,
+      date_release: this.accountForm.get('date_release')?.value,
+      date_revision: this.accountForm.get('date_revision')?.value,
+    };
+  }
+
+  createAccount(account: Account): void {
+    this._accountService.addAccount(account).subscribe(
+      () => this.navigateToAccountList(),
+      (error) => this.handleError('guardar', error)
+    );
+  }
+
+  updateAccount(account: Account): void {
+    this._accountService.editAccount(this.accountId!, account).subscribe(
+      () => this.navigateToAccountList(),
+      (error) => this.handleError('editar', error)
+    );
+  }
+
+  navigateToAccountList(): void {
+    this.router.navigate(['/account-list']);
+  }
+
+  private handleError(action: string, error: any): void {
+    console.error(`No es posible ${action}`, error);
   }
 }
